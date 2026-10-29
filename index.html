@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071525">
+  <meta name="description" content="TUMIA helps you discover professionals, compare local prices and access everyday tools in one place.">
+  <title>TUMIA — Everyday Solutions, One Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#" aria-label="TUMIA home">
+      <span class="brand-icon">T</span>
+      <span>TUMIA<span class="brand-dot">.</span></span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#markets">Market prices</a>
+      <a href="#rates">Exchange rates</a>
+    </nav>
+
+    <a class="nav-button" href="#services">Explore TUMIA <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span class="live-dot"></span>
+          YOUR EVERYDAY DIGITAL COMPANION
+        </div>
+
+        <h1>Everything you need.<br>
+          <span>All in one place.</span>
+        </h1>
+
+        <p class="hero-description">
+          Find trusted professionals, discover better prices
+          and make smarter everyday decisions with TUMIA.
+        </p>
+
+        <form class="search-bar" id="searchForm">
+          <span class="search-icon">⌕</span>
+          <input id="globalSearch"
+            type="search"
+            placeholder="Search plumbers, phones, flour..."
+            aria-label="Search services and products">
+          <button type="submit">Search</button>
+        </form>
+
+        <div class="hero-meta">
+          <span>✓ Local discoveries</span>
+          <span>✓ Clear pricing</span>
+          <span>✓ Built for Kenya</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+
+        <div class="floating-card floating-top">
+          <span class="mini-icon green">✓</span>
+          <div>
+            <strong>Discover locally</strong>
+            <small>Services near you</small>
+          </div>
+        </div>
+
+        <div class="showcase-card">
+          <div class="showcase-top">
+            <span class="showcase-symbol">T</span>
+            <span class="status-pill"><span class="live-dot"></span> TUMIA</span>
+          </div>
+          <p class="showcase-label">YOUR DAY, SIMPLIFIED</p>
+          <div class="showcase-tiles">
+            <div class="showcase-tile tile-green">
+              <span>🔧</span><strong>Services</strong>
+            </div>
+            <div class="showcase-tile tile-blue">
+              <span>🛒</span><strong>Market</strong>
+            </div>
+            <div class="showcase-tile tile-orange">
+              <span>💱</span><strong>Rates</strong>
+            </div>
+            <div class="showcase-tile tile-purple">
+              <span>📅</span><strong>Bookings</strong>
+            </div>
+          </div>
+          <div class="showcase-footer">
+            <span class="avatar-stack">T</span>
+            <div><strong>One connected platform</strong><small>Many everyday solutions</small></div>
+          </div>
+        </div>
+
+        <div class="floating-card floating-bottom">
+          <span class="mini-icon orange">↗</span>
+          <div>
+            <strong>Compare smarter</strong>
+            <small>Make informed choices</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">DISCOVER TUMIA</span>
+          <h2>What do you need today?</h2>
+          <p>Useful services and tools, without the endless searching.</p>
+        </div>
+        <span class="section-count">01 / EXPLORE</span>
+      </div>
+
+      <div class="category-grid">
+        <button class="category-card active" data-category="all">
+          <span class="category-icon icon-green">✳</span>
+          <strong>Everything</strong>
+          <small>Explore all listings</small>
+        </button>
+        <button class="category-card" data-category="professional">
+          <span class="category-icon icon-blue">⚒</span>
+          <strong>Professionals</strong>
+          <small>Find trusted experts</small>
+        </button>
+        <button class="category-card" data-category="product">
+          <span class="category-icon icon-orange">▤</span>
+          <strong>Market prices</strong>
+          <small>Compare local products</small>
+        </button>
+        <button class="category-card" data-category="money">
+          <span class="category-icon icon-purple">↗</span>
+          <strong>Money tools</strong>
+          <small>Convert currencies</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="section directory-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">THE TUMIA DIRECTORY</span>
+          <h2 id="directoryTitle">Explore local listings</h2>
+          <p id="directoryDescription">Sample listings to demonstrate how discovery will work.</p>
+        </div>
+        <span class="result-count" id="resultCount">6 listings</span>
+      </div>
+
+      <div class="listing-grid" id="listingGrid">
+        <!-- JavaScript inserts listing cards here. -->
+      </div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <span>⌕</span>
+        <h3>No matching listings</h3>
+        <p>Try another search term or choose a different category.</p>
+        <button class="secondary-button" id="resetSearch">Clear search</button>
+      </div>
+    </section>
+
+    <section class="section tools-section" id="markets">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">SMARTER EVERYDAY CHOICES</span>
+          <h2>Useful tools, in one place.</h2>
+          <p>Start comparing and calculating with TUMIA.</p>
+        </div>
+        <span class="section-count">02 / TOOLS</span>
+      </div>
+
+      <div class="tools-grid">
+        <article class="tool-card price-tool">
+          <div class="tool-heading">
+            <span class="tool-icon">▤</span>
+            <span class="tool-label">MARKET WATCH</span>
+          </div>
+          <h3>Every shilling counts.</h3>
+          <p>Explore example prices for everyday products. Real listings will be added as local sellers join TUMIA.</p>
+          <div class="price-list">
+            <div class="price-row">
+              <span class="product-emoji">🌽</span>
+              <div class="product-info"><strong>Maize flour</strong><small>2 kg packet · sample</small></div>
+              <strong>KSh 160</strong>
+            </div>
+            <div class="price-row">
+              <span class="product-emoji">🛢️</span>
+              <div class="product-info"><strong>Cooking oil</strong><small>1 litre · sample</small></div>
+              <strong>KSh 280</strong>
+            </div>
+            <div class="price-row">
+              <span class="product-emoji">🍚</span>
+              <div class="product-info"><strong>Rice</strong><small>1 kg · sample</small></div>
+              <strong>KSh 180</strong>
+            </div>
+          </div>
+          <button class="text-button" id="viewProducts">Explore product listings →</button>
+        </article>
+
+        <article class="tool-card currency-tool" id="rates">
+          <div class="tool-heading">
+            <span class="tool-icon">↗</span>
+            <span class="tool-label">CURRENCY CONVERTER</span>
+          </div>
+          <h3>Money without borders.</h3>
+          <p>Convert currencies using illustrative rates. These figures are not live market quotations.</p>
+
+          <label for="amount">Amount</label>
+          <input id="amount" type="number" min="0" step="any" value="100">
+
+          <div class="currency-selectors">
+            <div>
+              <label for="fromCurrency">From</label>
+              <select id="fromCurrency">
+                <option value="KES">KES — Kenyan shilling</option>
+                <option value="USD">USD — US dollar</option>
+                <option value="EUR">EUR — Euro</option>
+                <option value="GBP">GBP — British pound</option>
+              </select>
+            </div>
+            <button id="swapCurrencies" class="swap-button" type="button" aria-label="Swap currencies">⇄</button>
+            <div>
+              <label for="toCurrency">To</label>
+              <select id="toCurrency">
+                <option value="USD">USD — US dollar</option>
+                <option value="KES">KES — Kenyan shilling</option>
+                <option value="EUR">EUR — Euro</option>
+                <option value="GBP">GBP — British pound</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="conversion-result">
+            <small>ILLUSTRATIVE RESULT</small>
+            <strong id="conversionResult">KES 100 = USD 0.77</strong>
+            <span id="conversionNote">Demonstration rate · not live data</span>
+          </div>
+        </article>
+      </div>
+     <section class="cta-section">
+      <div>
+        <span class="section-kicker">BE PART OF THE JOURNEY</span>
+        <h2>Local needs. Smarter solutions.</h2>
+        <p>Help us build a more connected marketplace for everyday life in Kenya.</p>
+      </div>
+      <a class="primary-button" href="#services">Explore TUMIA <span>↗</span></a>
+    </section>
+
+    <section class="services-section" id="services">
+      <div class="section-heading">
+        <p class="eyebrow">DISCOVER LOCAL PROFESSIONALS</p>
+        <h2>Services near you</h2>
+        <p>Explore services and compare prices in your area.</p>
+      </div>
+
+      
+      <div class="services-filters">
+        <input
+          type="search"
+          id="serviceSearch"
+          placeholder="Search plumbers, cleaners, electricians..."
+          aria-label="Search services"
+        >
+
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="">All categories</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Electrical">Electrical</option>
+          <option value="Cleaning">Cleaning</option>
+        </select>
+      </div>
+
+      <div id="servicesGrid" class="services-grid">
+        <p>Loading services...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="#">
+      <span class="brand-icon">T</span>
+      <span>TUMIA<span class="brand-dot">.</span></span>
+    </a>
+    <p>Designed for everyday life in Kenya.</p>
+    <span>© <span id="year"></span> TUMIA. Prototype version.</span>
+  </footer>
+
+  <dialog id="bookingDialog" class="booking-dialog">
+    <form id="bookingForm">
+      <div class="dialog-heading">
+        <div>
+          <span class="section-kicker">SERVICE REQUEST</span>
+          <h2>Request a booking</h2>
+        </div>
+        <button class="close-dialog" id="closeDialog" type="button" aria-label="Close">×</button>
+      </div>
+
+      <p class="dialog-description">This demo will validate your request locally. It will not contact a real provider yet.</p>
+
+      <label for="bookingService">Service</label>
+      <input id="bookingService" name="service" readonly>
+
+      <label for="customerName">Your name</label>
+      <input id="customerName" name="name" required maxlength="80" placeholder="Enter your name">
+
+      <label for="customerPhone">Phone number</label>
+      <input id="customerPhone" name="phone" required type="tel" maxlength="20" placeholder="e.g. 07XX XXX XXX">
+
+      <label for="bookingLocation">Your location</label>
+      <input id="bookingLocation" name="location" required maxlength="100" placeholder="Town or neighbourhood">
+
+      <label for="bookingDate">Preferred date</label>
+      <input id="bookingDate" name="date" required type="date">
+
+      <button class="primary-button full-button" type="submit">Submit demo request →</button>
+      <p class="form-message" id="bookingMessage" role="status"></p>
+    </form>
+  </dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

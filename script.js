@@ -516,3 +516,56 @@ renderServices(data);
 }
 
 loadTumiaServices();
+
+const providerSignupForm = document.getElementById("providerSignupForm");
+
+if (providerSignupForm) {
+  providerSignupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const message = document.getElementById("providerSignupMessage");
+    const submitButton = providerSignupForm.querySelector(
+      'button[type="submit"]'
+    );
+
+    const fullName = document.getElementById("providerFullName").value.trim();
+    const email = document.getElementById("providerEmail").value.trim();
+    const phone = document.getElementById("providerPhone").value.trim();
+    const password = document.getElementById("providerPassword").value;
+
+    message.textContent = "Creating your account...";
+    submitButton.disabled = true;
+
+    
+
+try {
+  const { data, error } = await tumiaSupabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: "https://petero254-boom.github.io/tumia/",
+      data: {
+        full_name: fullName,
+        phone: phone
+      }
+    }
+  });
+
+  if (error) {
+    throw error;
+  }
+
+ message.textContent = data.user?.identities?.length === 0
+  ? "An account may already exist with this email. Try signing in or use another email."
+  : "Account created! Check your email if verification is required. Your account will not automatically approve your services.";
+
+providerSignupForm.reset();
+
+} catch (error) {
+  console.error("TUMIA signup error:", error.message);
+  message.textContent = error.message || "Signup failed. Please try again.";
+} finally {
+  submitButton.disabled = false;
+}
+});
+}

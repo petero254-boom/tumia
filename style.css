@@ -919,3 +919,220 @@ h1 span { color: var(--green); }
     padding: 22px;
   }
 }
+
+/* ========================================
+   TUMIA — MODERN PROVIDER SIGNUP
+======================================== */
+
+.provider-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(1120px, calc(100% - 40px));
+  margin: 70px auto;
+  padding: 64px 24px;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(212, 175, 55, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #101510 0%, #17221b 55%, #0d120e 100%);
+  color: #f8faf8;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.16);
+}
+
+.provider-section::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -90px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 35px rgba(212, 175, 55, 0.025),
+    0 0 0 70px rgba(212, 175, 55, 0.02);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.provider-section .section-heading {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.provider-section .eyebrow {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 8px 14px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.08);
+  color: #e7c65b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.provider-section .section-heading h2 {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.provider-section .section-heading > p:last-child {
+  max-width: 540px;
+  margin: 0 auto;
+  color: #b8c3ba;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.provider-form {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 18px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.provider-form label {
+  align-self: end;
+  margin-top: 8px;
+  color: #e8ede9;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.provider-form input {
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  padding: 14px 15px;
+  border: 1px solid #354239;
+  border-radius: 11px;
+  outline: none;
+  background: #101812;
+  color: #ffffff;
+  font: inherit;
+  font-size: 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.provider-form input::placeholder {
+  color: #829087;
+}
+
+.provider-form input:hover {
+  border-color: #637468;
+}
+
+.provider-form input:focus {
+  border-color: #dfbd49;
+  background: #141e17;
+  box-shadow: 0 0 0 3px rgba(223, 189, 73, 0.13);
+}
+
+.provider-form input:focus-visible,
+.provider-form button:focus-visible {
+  outline: 2px solid #f0cf60;
+  outline-offset: 3px;
+}
+
+.provider-form .primary-button {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 54px;
+  margin-top: 14px;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f1d36c, #d3a92e);
+  color: #182016;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(211, 169, 46, 0.15);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.provider-form .primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(211, 169, 46, 0.25);
+}
+
+.provider-form .primary-button:active {
+  transform: translateY(0);
+}
+
+.provider-form .primary-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+#providerSignupMessage {
+  grid-column: 1 / -1;
+  min-height: 22px;
+  margin: 4px 0 0;
+  color: #e7c65b;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .provider-section {
+    width: calc(100% - 24px);
+    margin: 36px auto;
+    padding: 42px 16px;
+    border-radius: 20px;
+  }
+
+  .provider-section .section-heading h2 {
+    letter-spacing: -0.8px;
+  }
+
+  .provider-form {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 22px 17px;
+    border-radius: 16px;
+  }
+
+  .provider-form label {
+    margin-top: 8px;
+  }
+
+  .provider-form input {
+    min-height: 48px;
+  }
+
+  .provider-form .primary-button,
+  #providerSignupMessage {
+    grid-column: 1;
+  }
+}
